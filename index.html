@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>メール文章作成くん</title>
+	<link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <p style="text-align: right">Ver.20230501</p>
+    <h1>メール文章作成くん</h1>
+    <h2>①メール種類選択</h2>
+    <form>
+      <div id="mailTypes"></div>
+
+      <h2>②お客様お名前入力</h2>
+
+      <input
+        type="text"
+        id="customerName"
+        name="customerName"
+        value=""
+        placeholder="ここにお客様のお名前を入力してください"
+      />
+    </form>
+    <h2>③メール生成</h2>
+
+    <div>
+      <button type="button" onclick="generate()">メール生成</button>
+    </div>
+
+	<div id="result-wrap" hidden="hidden">
+    <textarea
+      id="result"
+      name="result"
+      rows="10"
+      cols="100"
+      placeholder="メール本文"
+    ></textarea>
+    <div>
+      <button type="button" onclick="Copy()">コピーする</button>
+    </div>
+</div>
+  </body>
+  <script src="./generateMail.js"></script>
+</html>
