@@ -47,8 +47,8 @@ function generate() {
   const selectedMail = mails.find(
     (mail) => mail.id.toString() === selectedMailId
   );
-  const generatedMail = selectedMail.body.replace("${name}", customerName);
-  document.getElementById("result").value = generatedMail;
+  const body = selectedMail.body;
+  document.getElementById("result").value = body.replaceAll('{{name}}', customerName);
   document.getElementById("result-wrap").removeAttribute("hidden");
 }
 
