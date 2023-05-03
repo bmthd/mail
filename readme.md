@@ -9,12 +9,12 @@ git clone https://github.com/bmthd/mail
 
 git cloneを行うか、フォルダごとダウンロードしてください。
 
-mails.jsonにメール情報を保存します。
+mailsにメール情報を保存します。
 - idにはわかりやすい固有のメール内容
 - categoryにはテンプレートが探しやすいよう、カテゴリーを設定
 - bodyにはメール本文を設定します。名前の埋込には{{name}}、改行は\nを使用します。
 ```
-[
+const mails = [
   {
     "id": "注文受付完了",
     "category": "注文関連",
