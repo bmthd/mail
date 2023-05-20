@@ -102,35 +102,46 @@ Object.keys(mailsByCategory).forEach((category) => {
     radio.type = "radio";
     radio.name = "mailType";
     radio.value = mail.id;
+    radio.addEventListener("change", onChange);
     radioLabel.appendChild(radio);
     radioLabel.appendChild(document.createTextNode(mail.id));
     categoryDiv.appendChild(radioLabel);
   });
 
-  mailTypesElement.appendChild(categoryDiv);
+  mailTypesElement?.appendChild(categoryDiv);
 });
 
-//　メール本文に名前を割り当てて出力する
-function generate() {
-  const customerName = document.getElementById("customerName").value;
+function onChange(){
   const selectedMailId = document.querySelector(
     'input[name="mailType"]:checked'
-  ).value;
+  )?.value;
   const selectedMail = mails.find(
     (mail) => mail.id.toString() === selectedMailId
   );
-  const body = selectedMail.body;
-  document.getElementById("result").value = body.replaceAll(
+  document.getElementById("preview").innerText = selectedMail?.body;
+}
+
+//　メール本文に名前を割り当てて出力する
+function generate() {
+  const customerName = document.getElementById("customerName")?.value;
+  const selectedMailId = document.querySelector(
+    'input[name="mailType"]:checked'
+  )?.value;
+  const selectedMail = mails.find(
+    (mail) => mail.id.toString() === selectedMailId
+  );
+  const body = selectedMail?.body;
+  document.getElementById("result").value = body?.replaceAll(
     "{{name}}",
     customerName
   );
-  document.getElementById("result-wrap").removeAttribute("hidden");
+  document.getElementById("result-wrap")?.removeAttribute("hidden");
 }
 
 // コピーする
 function Copy() {
   const copyTarget = document.getElementById("result");
-  copyTarget.select();
+  copyTarget?.select();
   document.execCommand("Copy");
   alert("コピーしました");
   //　コピーしたら名前とテキストエリア内を空にし、結果を非表示にする
